@@ -15,3 +15,4 @@ build: $(BUILD_DIRS)
 
 clean:
 	rm $(wildcard bin/*.*)
+	rm $(wildcard RPM.exe)
