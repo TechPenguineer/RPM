@@ -3,10 +3,10 @@
 #include <ctype.h>
 int main(int argc, char *argv[])
 {
-    char arg[] = tolower(argv);
-    if (argv[1] == "add")
+    // ADD DEPENDENCY
+    if (tolower(argv[1]) == "add" && tolower(argv[2])=="dep"&& tolower(argv[4])=="-v" && argc==3)
     {
-        /* code */
+        AppendDep(tolower(argv[3]), argv[5]);
     }
     
 }
