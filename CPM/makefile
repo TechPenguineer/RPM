@@ -2,5 +2,6 @@ CFLAGS = -Wall
 CC=gcc
 SRC=$(wildcard src/*.c)
 
-build: ${SRC}
-	${cc}
+
+%.o: %.c $(SRC)
+	$(CC) -c -o $@ $< $(CFLAGS)
