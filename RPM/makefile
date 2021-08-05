@@ -1,18 +1,19 @@
-CFLAGS = -Wall
-CC=gcc
-SRC=$(wildcard src/*.c)
-OBJDIR=${wildcard bin/$@.o}
+cc=gcc
+CFLAGS = -g -c 
+OBJDIR = objects
+SRC= $(wildcard src/*.c src/global/*.c )
+SRCH= $(wildcard src/*.h )
 
-BUILD_DIRS=$(SRC) $(wildcard src/global/*.c) src/handle.h
-EXEC_NME=RPM
 
-BUILD_TARG = $(BUILD_DIRS)
+BUILD_TARG = ${SRC} src/handle.h
+build: ${BUILD_TARG}
+	${cc} -g -Wall -o RPM ${SRC}
+	${cc} -g ${CFLAGS} ${SRC} -o bin/$@.o
+	
+clean: 
+	rm ${wildcard *.o}
+	rm ${wildcard *.exe}
 
-build: $(BUILD_DIRS)
-	$(CC) -g $(wildcard src/*.h) -o bin/$@.o
-	$(CC) -g $(CFLAGS) $(BUILD_TARG) -o bin/$@.o
-	$(CC) -g -Wall -o RPM $(BUILD_TARG) 
-
-clean:
-	rm $(wildcard bin/*.*)
-	rm $(wildcard RPM.exe)
+rebuild:
+	make clean
+	make build

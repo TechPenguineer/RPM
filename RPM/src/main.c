@@ -16,16 +16,7 @@ int main(int argc, char *argv[])
     if (strcmp(argv[1], "add")==0 && strcmp(argv[2], "dep")==0 && strcmp(argv[4], "-v")==0 //&& argc==5
     )
     {
-        if(argc == 6)
-        {
-         printf("Adding Dependency: %s Version %s ", argv[3], argv[5]);
-        }
-        else if(argc <= 5){
-            printf("RPM Error: Not enought arguments supplied");
-        }else if(argc > 6){
-            printf("RPM Error: Too many arguments supplied");
-        
-        }
+        AppendDep(argc, argv);
     }
     
 }
